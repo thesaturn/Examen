@@ -1,6 +1,4 @@
-# Modulo Login
 
-Sigue estas instrucciones Vergara, LEE TODO
 
 # 1. Instala estos paquetes de Django:
 
