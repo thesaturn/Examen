@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Directorio de Vehículos a la venta</title>
+  </head>
+  <body>
+
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <a class="navbar-brand" href="">Navegación</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+          aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/home/">Inicio<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/registro/">Registro de Lista de Compras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/lista/">Ver Lista de Compras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contacto/">Contacto</a>
+              </li>
+            </ul>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    {% block login1 %}
+                    {% if user.is_authenticated %}
+                      <font color="white">Bienvenido, {{ user.username }}!</font>
+                      <a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                      <font color="white">No estás autentificado!</font>
+                      <a href="{% url 'login' %}">Login</a>
+                    {% endif %}
+                    {% endblock %}
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+
+        <br>
+        <br>
+        <br>
+<div class="container mx-auto">
+
+  <div class="row mx-auto">
+
+      {% block content %}
+
+      {% for instance in object_list %}
+      <ul class="list-group mx-auto" style="max-width: 19rem;">
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Marca:</p>{{instance.marca}}</li>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Modelo:</p>{{instance.modelo}}</li>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Color:</p>{{instance.color}}</li>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Año:</p>{{instance.año}}</li>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Número de Puertas:</p>{{instance.número_Puertas}}</li>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Precio:</p>${{instance.precio}}</li>
+        <li class="list-group-item text-justify"><p class="text-primary text-center font-weight-bold">Descripción:</p>{{instance.descripción}}</li>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Fecha de Publicación:</p>{{instance.fecha_de_Publicación}}</li>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Comprar</button>
+        <br>
+      </ul>
+      <br>
+      {% endfor %}
+
+      {% endblock%}
+
+  </div>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+  <p class="mb-1">&copy; Vergara's Technologies 2018</p>
+  <ul class="list-inline">
+    <li class="list-inline-item"><a href="/home/">Volver a Home</a></li>
+  </ul>
+</footer>
+</div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
