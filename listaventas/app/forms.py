@@ -1,19 +1,24 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Vehiculo
+from .models import Producto, ListaProducto
 
-class VehiculoForm(forms.ModelForm):
+class ListaForm(forms.ModelForm):
     class Meta:
-        model = Vehiculo
+        model = ListaProducto
+        exclude =  ['user','slug']
+
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
         fields = [
-        'marca',
-        'modelo',
-        'año',
-        'color',
-        'número_Puertas',
-        'descripción',
-        'precio',
+        'nombre_Producto',
+        'costo_Presupuestado',
+        'costo_Real',
+        'tienda',
+        'notas',
+        'nombre_Lista',
         ]
+
 class LoginForm(AuthenticationForm):
     username=forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), label="Usuario")
     password=forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}), label="Contraseña")

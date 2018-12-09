@@ -63,15 +63,8 @@
 
       {% for instance in object_list %}
       <ul class="list-group mx-auto" style="max-width: 19rem;">
-        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Marca:</p>{{instance.marca}}</li>
-        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Modelo:</p>{{instance.modelo}}</li>
-        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Color:</p>{{instance.color}}</li>
-        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Año:</p>{{instance.año}}</li>
-        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Número de Puertas:</p>{{instance.número_Puertas}}</li>
-        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Precio:</p>${{instance.precio}}</li>
-        <li class="list-group-item text-justify"><p class="text-primary text-center font-weight-bold">Descripción:</p>{{instance.descripción}}</li>
-        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Fecha de Publicación:</p>{{instance.fecha_de_Publicación}}</li>
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Comprar</button>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Nombre Lista:</p>{{instance.nombre_Lista}}</li>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
         <br>
       </ul>
       <br>

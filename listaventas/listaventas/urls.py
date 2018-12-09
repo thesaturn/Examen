@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url, include
-from app.views import auto_vista_test, auto_lista, contacto, login, home, home2
+from app.views import auto_vista_test, auto_lista, contacto, login, home, crear_lista
 from django.contrib.auth import views as auth_views
 from app import views as core_views
 
@@ -29,6 +29,6 @@ urlpatterns = [
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     path('accounts/', include('django.contrib.auth.urls')),
     url(r'^signup/$', core_views.signup, name='signup'),
-    path('home2/', home2),
+    path('registrolista/', crear_lista),
 
 ]

@@ -1,19 +1,13 @@
 from django.contrib import admin
-from .models import Marca, Color, Vehiculo
+from .models import Producto, ListaProducto
 
-class MarcaAdmin(admin.ModelAdmin):
-    list_display = ['marca','slug']
-    prepopulated_fields = {'slug':('marca',)}
-admin.site.register(Marca, MarcaAdmin)
+class ListaProductoAdmin(admin.ModelAdmin):
+    list_display = ['nombre_Lista']
+    prepopulated_fields = {'slug':('nombre_Lista',)}
+admin.site.register(ListaProducto, ListaProductoAdmin)
 
-class ColorAdmin(admin.ModelAdmin):
-    list_display = ['color','slug']
-    prepopulated_fields = {'slug':('color',)}
-admin.site.register(Color, ColorAdmin)
 
-class VehiculoAdmin(admin.ModelAdmin):
-    list_display = ['modelo','marca','color','slug','precio','número_Puertas','disponible','fecha_de_Publicación']
-    list_filter = ['marca','color','disponible','fecha_de_Publicación']
-    list_editable = ['precio','disponible']
-    prepopulated_fields = {'slug':('modelo',)}
-admin.site.register(Vehiculo, VehiculoAdmin)
+class ProductoAdmin(admin.ModelAdmin):
+    list_display = ['nombre_Producto','costo_Presupuestado', 'costo_Real', 'tienda', 'notas','slug']
+    prepopulated_fields = {'slug':('nombre_Producto',)}
+admin.site.register(Producto, ProductoAdmin)
