@@ -8,6 +8,8 @@ pip install social-auth-app-django
 
 pip install django-sslserver
 
+pip install django-progressive-web-app
+
 # 2. Al correr el runserver, debes hacerlo con el siguiente comando:
 
 python manage.py runsslserver
