@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url, include
-from app.views import auto_vista_test, auto_lista, contacto, login, home, crear_lista
+from app.views import auto_vista_test, auto_lista, contacto, login, home, crear_lista,delete
 from django.contrib.auth import views as auth_views
 from app import views as core_views
 
@@ -30,5 +30,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     url(r'^signup/$', core_views.signup, name='signup'),
     path('registrolista/', crear_lista),
-
+    path('', include('pwa.urls')),
+    path('delete/', delete)
 ]

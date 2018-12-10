@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 class ListaProducto(models.Model):
     user = models.ForeignKey(User,default=User, on_delete=models.CASCADE)
@@ -14,9 +15,14 @@ class ListaProducto(models.Model):
     def __str__(self):
         return self.nombre_Lista
 
+    def save(self, *args, **kwargs):
+        if self.slug == '':
+            self.slug = slugify(self.nombre_Lista)
+        super(ListaProducto, self).save(*args, **kwargs)
+
 class Producto(models.Model):
     user = models.ForeignKey(User,default=None, on_delete=models.CASCADE, null=True)
-    nombre_Lista = models.ForeignKey(ListaProducto, related_name='products', on_delete=models.CASCADE, default=None)
+    nombre_Lista = models.ForeignKey(ListaProducto, related_name='products', on_delete=models.CASCADE, default='asd')
     nombre_Producto = models.CharField(max_length=200, db_index=True)
     costo_Presupuestado = models.PositiveIntegerField()
     costo_Real = models.PositiveIntegerField()
@@ -32,5 +38,7 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombre_Producto
 
-    def get_absolute_url(self):
-        return reverse('shop2:vehiculo_list_by_marca', args=[self.slug])
+    def save(self, *args, **kwargs):
+        if self.slug == '':
+            self.slug = slugify(self.nombre_Producto)
+        super(Producto, self).save(*args, **kwargs)

@@ -1,56 +1,60 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>Directorio de Vehículos a la venta</title>
+    <title>Lista de Compras</title>
   </head>
   <body>
 
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <a class="navbar-brand" href="">Navegación</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-          aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                  <a class="navbar-brand" href="">Navegación</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                  aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
 
-          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/home/">Inicio<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/registro/">Registro de Lista de Compras</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/lista/">Ver Lista de Compras</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/contacto/">Contacto</a>
-              </li>
-            </ul>
-            <div class="navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
-                    {% block login1 %}
-                    {% if user.is_authenticated %}
-                      <font color="white">Bienvenido, {{ user.username }}!</font>
-                      <a href="{% url 'logout' %}">Logout</a>
-                    {% else %}
-                      <font color="white">No estás autentificado!</font>
-                      <a href="{% url 'login' %}">Login</a>
-                    {% endif %}
-                    {% endblock %}
-                  </li>
-                </ul>
-            </div>
-          </div>
-        </nav>
+                  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="/home/">Inicio<span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/registro/">Registro Productos</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/registrolista/">Registro Lista Compras</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/lista/">Ver Lista de Compras</a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="/contacto/">Contacto</a>
+                      </li>
+                    </ul>
+                    <div class="navbar-collapse">
+                        <ul class="navbar-nav ml-auto">
+                          <li class="nav-item active">
+                            {% block login1 %}
+                            {% if user.is_authenticated %}
+                              <font color="white">Bienvenido, {{ user.username }}!</font>
+                              <a href="{% url 'logout' %}">Logout</a>
+                            {% else %}
+                              <font color="white">No estás autentificado!</font>
+                              <a href="{% url 'login' %}">Login</a>
+                            {% endif %}
+                            {% endblock %}
+                          </li>
+                        </ul>
+                    </div>
+                  </div>
+                </nav>
 
         <br>
         <br>
@@ -62,9 +66,13 @@
       {% block content %}
 
       {% for instance in object_list %}
-      <ul class="list-group mx-auto" style="max-width: 19rem;">
+        <ul class="list-group mx-auto" style="max-width: 19rem;">
         <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Nombre Lista:</p>{{instance.nombre_Lista}}</li>
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Nombre Producto:</p>{{instance.nombre_Producto}}</li>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Costo Presupuestado:</p>{{instance.costo_Presupuestado}}</li>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Costo Real:</p>{{instance.costo_Real}}</li>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Tienda:</p>{{instance.tienda}}</li>
+        <li class="list-group-item text-center"><p class="text-primary text-center font-weight-bold">Notas:</p>{{instance.notas}}</li>
         <br>
       </ul>
       <br>

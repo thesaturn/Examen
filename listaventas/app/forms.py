@@ -10,14 +10,7 @@ class ListaForm(forms.ModelForm):
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = [
-        'nombre_Producto',
-        'costo_Presupuestado',
-        'costo_Real',
-        'tienda',
-        'notas',
-        'nombre_Lista',
-        ]
+        exclude = ['user','slug']
 
 class LoginForm(AuthenticationForm):
     username=forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), label="Usuario")
